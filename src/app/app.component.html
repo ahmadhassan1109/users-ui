@@ -1,0 +1,48 @@
+<div style="text-align: center;">  
+  <h1>Users Upload</h1>
+  <input type="file" (change)="onFileChange($event)" accept=".csv" />
+  
+     <button
+        mat-flat-button
+        color="primary"          
+        (click)="uploadCSV()">
+        Upload
+      </button>      
+   
+      <br/><br/>
+
+      <table style="position: relative; left: 40%" class="example-card mat-table" >
+        <tr class="mat-header-row" [ariaRowSpan]="2">
+
+        </tr>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell">A</th>
+          <th class="mat-header-cell">B</th>
+        </tr>
+        <tr class="mat-row" *ngFor="let user of users | async">
+          <td class="mat-cell">{{ user.id }}</td>
+          <td class="mat-cell">{{ user.name }}</td>
+          <td class="mat-cell">{{ user.address }}</td>
+          <td class="mat-cell">{{ user.email }}</td>
+        </tr>
+      </table>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>List of Users</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let user of users | async">
+          <tr>
+            <td>{{ user.id }} </td> 
+            <td>{{ user.name }} </td>
+            <td>{{ user.address }} </td>
+            <td>{{ user.email}} </td>
+          </tr>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+</div>
